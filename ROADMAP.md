@@ -19,6 +19,19 @@ that share the same GraphQL backend:
 This isn't scoped yet (no auth model, no per-operator data ownership rules
 decided) — it's a direction, not a committed design.
 
+## Monetization idea: premium subscriptions
+
+Tickets for high-demand dates (e.g. Christmas, New Year's) sell out fast, and
+operators only open sales for those dates at specific announced times — you
+can't buy them whenever you want. Idea: a premium subscription tier that
+notifies subscribers the moment sales open for these special dates, giving
+them a head start over non-subscribers.
+
+Not scoped yet either — depends on the traveler-facing app existing first,
+and on being able to detect/track when each operator opens sales for a given
+date (may require polling or scraping operator sites, since none of them are
+expected to offer a webhook/notification API).
+
 ## Near-term (see README)
 
 - [ ] Model the domain: transport companies, routes, schedules, and prices.
