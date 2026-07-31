@@ -1,8 +1,8 @@
 # Roadmap
 
 Ideas and future directions for this project that go beyond the current
-technology foundation. Also tracked as GitHub Issues once the repo is
-public — this file is the running notebook version.
+technology foundation. Also tracked as GitHub Issues in this repo — this
+file is the running notebook version.
 
 ## Two separate frontends
 
@@ -31,6 +31,20 @@ Not scoped yet either — depends on the traveler-facing app existing first,
 and on being able to detect/track when each operator opens sales for a given
 date (may require polling or scraping operator sites, since none of them are
 expected to offer a webhook/notification API).
+
+## Carpooling
+
+People already do this informally today, through Facebook groups or word of
+mouth: someone driving from/to Bragado on a given day and time, with some
+free seats, offers a ride, and other travelers arrange with the driver to
+join. Idea: let drivers publish a trip (date, time, direction, number of
+available seats) and let travelers request/reserve a seat directly in the
+app, alongside the operator schedules.
+
+Not scoped yet — raises questions the operator schedules don't: driver
+identity/trust, how payment or cost-sharing between driver and passengers
+is handled (if at all), and whether it needs its own moderation/reporting
+tools. Likely belongs in the traveler-facing app once that exists.
 
 ## Near-term (see README)
 
