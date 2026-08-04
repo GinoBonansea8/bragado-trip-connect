@@ -1,6 +1,10 @@
 FROM mcr.microsoft.com/dotnet/sdk:10.0-noble AS build
 WORKDIR /src
 
+# Package signature verification fetches CRLs from crl3.digicert.com over HTTP.
+# When that host is unreachable, restore blocks on TCP timeouts instead of failing.
+ENV DOTNET_NUGET_SIGNATURE_VERIFICATION=false
+
 COPY src/BragadoTripConnect.Api/BragadoTripConnect.Api.csproj src/BragadoTripConnect.Api/
 RUN dotnet restore src/BragadoTripConnect.Api/BragadoTripConnect.Api.csproj
 
