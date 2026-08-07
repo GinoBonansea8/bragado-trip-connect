@@ -42,6 +42,8 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
                 entity.CompanyCuit
             });
 
+            schedule.Property(entity => entity.Price).HasPrecision(10, 2);
+
             schedule.HasOne(entity => entity.Route)
                 .WithMany()
                 .HasForeignKey(entity => new { entity.RouteOrigin, entity.RouteDestination });

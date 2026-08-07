@@ -12,6 +12,10 @@ public class Schedule
 
     public string CompanyCuit { get; set; } = null!;
 
+    public decimal Price { get; set; }
+
+    public int DurationMinutes { get; set; }
+
     public Route Route { get; set; } = null!;
 
     public Company Company { get; set; } = null!;
