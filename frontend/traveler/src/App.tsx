@@ -7,49 +7,51 @@ function App() {
     <>
       <header>
         <span className="brand">Bragado Trip Connect</span>
-        <span className="badge">Travellers</span>
+        <span className="badge">Viajeros</span>
       </header>
 
       <main>
-        <h1>Find your trip</h1>
+        <h1>Encontrá tu viaje</h1>
         <p>
-          Every departure between Bragado and Buenos Aires — 21900, Santorini
-          Turismo, Chevallier and Trenes Argentinos — in one place, side by side.
+          Todas las salidas entre Bragado y Buenos Aires — 21900, Santorini
+          Turismo, Chevallier y Trenes Argentinos — en un solo lugar, una al
+          lado de la otra.
         </p>
 
         <form className="panel">
           <div className="row">
             <div className="field">
-              <label htmlFor="origin">From</label>
+              <label htmlFor="origin">Desde</label>
               <select id="origin" defaultValue="Bragado" disabled>
                 {STOPS.map(stop => <option key={stop}>{stop}</option>)}
               </select>
             </div>
 
             <div className="field">
-              <label htmlFor="destination">To</label>
+              <label htmlFor="destination">Hasta</label>
               <select id="destination" defaultValue="Retiro" disabled>
                 {STOPS.map(stop => <option key={stop}>{stop}</option>)}
               </select>
             </div>
 
             <div className="field">
-              <label htmlFor="date">Date</label>
+              <label htmlFor="date">Fecha</label>
               <input id="date" type="date" disabled />
             </div>
           </div>
 
-          <button type="submit" disabled>Search departures</button>
+          <button type="submit" disabled>Buscar salidas</button>
         </form>
 
-        <h2>Departures</h2>
+        <h2>Salidas</h2>
         <p className="placeholder">
-          Results will land here once the API can answer a search.
+          Acá van a aparecer los resultados, cuando la API pueda responder una
+          búsqueda.
         </p>
 
-        <h2>My bookings</h2>
+        <h2>Mis reservas</h2>
         <p className="placeholder">
-          Trips you reserve will be listed here.
+          Los viajes que reserves se van a listar acá.
         </p>
 
         <ApiStatus />
