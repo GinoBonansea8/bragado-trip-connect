@@ -26,23 +26,32 @@ four operators.
 ## Current status
 
 This repository currently contains the **technology foundation** for the
-project: a working, containerized full-stack setup with a frontend, a
+project: a working, containerized full-stack setup with two frontends, a
 backend exposing a GraphQL API, and a PostgreSQL database wired together
-end to end. Real schedule and pricing data for the four operators, along
-with the actual trip-comparison features, will be added in upcoming
-iterations.
+end to end. The domain is modelled and both apps are laid out, but their
+screens are still inert — the API only answers a health check so far.
+Publishing schedules, searching them and booking a seat come next, followed
+by real data for the four operators.
 
 ## Architecture
 
 ```
-┌─────────────┐        GraphQL        ┌──────────────────┐        EF Core       ┌────────────┐
-│   React     │  ───────────────────► │   ASP.NET Core    │  ─────────────────► │ PostgreSQL │
-│  (frontend) │  ◄─────────────────── │  + HotChocolate   │  ◄───────────────── │  (database) │
-└─────────────┘                       └──────────────────┘                      └────────────┘
+┌──────────────────┐
+│  Traveler app    │ ─┐
+│  (React, :3000)  │  │
+└──────────────────┘  │     GraphQL      ┌──────────────────┐     EF Core      ┌────────────┐
+                      ├────────────────► │   ASP.NET Core   │ ───────────────► │ PostgreSQL │
+┌──────────────────┐  │  ◄────────────── │  + HotChocolate  │ ◄─────────────── │            │
+│  Company app     │ ─┘                  └──────────────────┘                  └────────────┘
+│  (React, :3001)  │
+└──────────────────┘
 ```
 
-- **Frontend**: React + TypeScript, built with Vite, using Apollo Client to
-  query the GraphQL API.
+- **Frontends**: two React + TypeScript apps built with Vite, both querying the
+  same GraphQL API through Apollo Client. The **traveler app** is for people
+  looking to travel; the **company app** is for the transport operators to
+  publish their schedules and fares. They are separate applications because
+  they serve different audiences and will diverge as features are added.
 - **Backend**: ASP.NET Core (.NET 10) exposing a GraphQL API via
   [HotChocolate](https://chillicream.com/docs/hotchocolate).
 - **Database**: PostgreSQL, accessed through Entity Framework Core (Npgsql
@@ -63,17 +72,19 @@ cp .env.example .env
 docker compose up --build
 ```
 
-- Frontend: http://localhost:3000
+- Traveler app: http://localhost:3000
+- Company app: http://localhost:3001
 - Backend GraphQL endpoint: http://localhost:5000/graphql
 
-The frontend calls a `health` GraphQL query, which the backend resolves by
-reading a row from PostgreSQL through EF Core — confirming the whole chain
-(React → GraphQL → EF Core → PostgreSQL) works end to end.
+Both apps call a `health` GraphQL query, which the backend resolves by reading
+a row from PostgreSQL through EF Core — confirming the whole chain (React →
+GraphQL → EF Core → PostgreSQL) works end to end.
 
 ### Running services individually (without Docker)
 
 - Backend: `cd backend/src/BragadoTripConnect.Api && dotnet run`
-- Frontend: `cd frontend && npm install && npm run dev`
+- Traveler app: `cd frontend/traveler && npm install && npm run dev`
+- Company app: `cd frontend/company && npm install && npm run dev`
 
 ## Roadmap
 

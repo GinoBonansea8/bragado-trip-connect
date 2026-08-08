@@ -26,19 +26,30 @@ services:
         condition: service_healthy
     environment:
       ConnectionStrings__Default: "Host=${POSTGRES_HOST:-db};Port=${POSTGRES_PORT:-5432};Database=${POSTGRES_DB:-bragado_trip_connect};Username=${POSTGRES_USER:-postgres};Password=${POSTGRES_PASSWORD:-postgres}"
-      Frontend__Origin: ${FRONTEND_ORIGIN:-http://localhost:3000}
+      Frontend__Origins__0: ${TRAVELER_ORIGIN:-http://localhost:3000}
+      Frontend__Origins__1: ${COMPANY_ORIGIN:-http://localhost:3001}
     ports:
       - "5000:8080"
 
-  frontend:
+  traveler:
     build:
-      context: ./frontend
+      context: ./frontend/traveler
       dockerfile: Dockerfile
     restart: unless-stopped
     depends_on:
       - backend
     ports:
       - "3000:80"
+
+  company:
+    build:
+      context: ./frontend/company
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "3001:80"
 
 volumes:
   db-data:

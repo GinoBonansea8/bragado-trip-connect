@@ -14,13 +14,14 @@ builder.Services
     .AddQueryType<Query>();
 
 const string frontendCorsPolicy = "Frontend";
-var allowedOrigin = builder.Configuration["Frontend:Origin"] ?? "http://localhost:3000";
+var allowedOrigins = builder.Configuration.GetSection("Frontend:Origins").Get<string[]>()
+    ?? ["http://localhost:3000", "http://localhost:3001"];
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(frontendCorsPolicy, policy =>
     {
-        policy.WithOrigins(allowedOrigin)
+        policy.WithOrigins(allowedOrigins)
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
