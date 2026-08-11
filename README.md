@@ -25,13 +25,16 @@ four operators.
 
 ## Current status
 
-This repository currently contains the **technology foundation** for the
-project: a working, containerized full-stack setup with two frontends, a
-backend exposing a GraphQL API, and a PostgreSQL database wired together
-end to end. The domain is modelled and both apps are laid out, but their
-screens are still inert — the API only answers a health check so far.
-Publishing schedules, searching them and booking a seat come next, followed
-by real data for the four operators.
+The domain is modelled, and the **company app works end to end**: an operator
+picks a route, a date, a departure and arrival time and a fare, and the
+departure is stored in PostgreSQL and listed back. The four operators and the
+routes they serve ship with the database, so there are no screens to manage
+them.
+
+The traveler app is still laid out but inert — searching those departures and
+booking a seat come next, followed by real schedule and fare data for the four
+operators. There is no login yet: the company app asks which operator is
+publishing, and takes the answer at face value.
 
 ## Architecture
 

@@ -11,7 +11,8 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connect
 
 builder.Services
     .AddGraphQLServer()
-    .AddQueryType<Query>();
+    .AddQueryType<Query>()
+    .AddMutationType<Mutation>();
 
 const string frontendCorsPolicy = "Frontend";
 var allowedOrigins = builder.Configuration.GetSection("Frontend:Origins").Get<string[]>()

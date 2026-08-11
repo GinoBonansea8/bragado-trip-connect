@@ -1,5 +1,9 @@
 namespace BragadoTripConnect.Api.Data;
 
+// Route and Company below are hidden from the GraphQL schema: they are only
+// loaded when a query asks for them, and everything the API exposes today is
+// already on the schedule itself.
+
 public class Schedule
 {
     public string RouteOrigin { get; set; } = null!;
@@ -16,7 +20,9 @@ public class Schedule
 
     public int DurationMinutes { get; set; }
 
+    [GraphQLIgnore]
     public Route Route { get; set; } = null!;
 
+    [GraphQLIgnore]
     public Company Company { get; set; } = null!;
 }

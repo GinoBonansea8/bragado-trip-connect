@@ -27,6 +27,23 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 
         modelBuilder.Entity<Company>().HasKey(company => company.Cuit);
 
+        // The operators and the routes they serve barely ever change, so they
+        // ship with the database instead of needing screens to manage them.
+        // The CUITs below are placeholders — the real ones still have to be
+        // looked up and filled in before this runs against anything but a
+        // development database.
+        modelBuilder.Entity<Company>().HasData(
+            new Company { Cuit = "30-00000001-7", Name = "21900" },
+            new Company { Cuit = "30-00000002-5", Name = "Santorini Turismo" },
+            new Company { Cuit = "30-00000003-3", Name = "Chevallier" },
+            new Company { Cuit = "30-00000004-1", Name = "Trenes Argentinos" });
+
+        modelBuilder.Entity<Route>().HasData(
+            new Route { Origin = "Bragado", Destination = "Retiro" },
+            new Route { Origin = "Retiro", Destination = "Bragado" },
+            new Route { Origin = "Bragado", Destination = "Once" },
+            new Route { Origin = "Once", Destination = "Bragado" });
+
         modelBuilder.Entity<User>().HasKey(user => user.Dni);
 
         modelBuilder.Entity<Route>().HasKey(route => new { route.Origin, route.Destination });
