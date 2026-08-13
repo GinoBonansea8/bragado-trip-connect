@@ -14,7 +14,9 @@ public class Booking
 
     public string UserDni { get; set; } = null!;
 
+    [GraphQLIgnore]
     public Schedule Schedule { get; set; } = null!;
 
+    [GraphQLIgnore]
     public User User { get; set; } = null!;
 }
