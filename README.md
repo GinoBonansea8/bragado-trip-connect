@@ -25,16 +25,22 @@ four operators.
 
 ## Current status
 
-The domain is modelled, and the **company app works end to end**: an operator
-picks a route, a date, a departure and arrival time and a fare, and the
-departure is stored in PostgreSQL and listed back. The four operators and the
-routes they serve ship with the database, so there are no screens to manage
-them.
+**Both apps now work end to end**, which makes the core of the project real:
 
-The traveler app is still laid out but inert — searching those departures and
-booking a seat come next, followed by real schedule and fare data for the four
-operators. There is no login yet: the company app asks which operator is
-publishing, and takes the answer at face value.
+- In the **company app**, an operator picks a route, a date, a departure and
+  arrival time and a fare, and the departure is stored in PostgreSQL.
+- In the **traveler app**, someone picks a route and a date and gets every
+  operator's departures for it in one table — sortable by departure time, price
+  or duration, with the cheapest and the quickest marked, and arrivals that fall
+  past midnight shown as landing the next day.
+
+The four operators and the routes they serve ship with the database, so there
+are no screens to manage them.
+
+Still missing: booking a seat, and real schedule and fare data for the four
+operators — everything in the database today was entered by hand. There is no
+login either; the company app asks which operator is publishing and takes the
+answer at face value.
 
 ## Architecture
 
@@ -94,7 +100,7 @@ GraphQL → EF Core → PostgreSQL) works end to end.
 - [ ] Model the domain: transport companies, routes, schedules, and prices.
 - [ ] Load real data for 21900, Santorini Turismo, Chevallier, and Trenes
       Argentinos.
-- [ ] Build the trip comparison UI (filter by date, sort by price/duration).
+- [x] Build the trip comparison UI (filter by date, sort by price/duration).
 - [ ] Add automated tests (backend and frontend).
 - [ ] Deploy a public demo.
 

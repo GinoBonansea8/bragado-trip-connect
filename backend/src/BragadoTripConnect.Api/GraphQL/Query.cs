@@ -31,6 +31,30 @@ public class Query
             .ToListAsync(cancellationToken);
     }
 
+    public async Task<List<DepartureOption>> SearchDeparturesAsync(
+        string origin,
+        string destination,
+        DateOnly date,
+        AppDbContext dbContext,
+        CancellationToken cancellationToken)
+    {
+        return await dbContext.Schedules
+            .Where(schedule => schedule.RouteOrigin == origin
+                && schedule.RouteDestination == destination
+                && schedule.Date == date)
+            .OrderBy(schedule => schedule.Time)
+            .Select(schedule => new DepartureOption(
+                schedule.CompanyCuit,
+                schedule.Company.Name,
+                schedule.RouteOrigin,
+                schedule.RouteDestination,
+                schedule.Date,
+                schedule.Time,
+                schedule.DurationMinutes,
+                schedule.Price))
+            .ToListAsync(cancellationToken);
+    }
+
     public async Task<List<Schedule>> GetDeparturesByCompanyAsync(
         string companyCuit,
         AppDbContext dbContext,
