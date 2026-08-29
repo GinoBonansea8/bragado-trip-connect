@@ -37,10 +37,11 @@ export interface FormOptionsResult {
 export const DEPARTURES_QUERY = gql`
   query Departures($companyCuit: String!) {
     departuresByCompany(companyCuit: $companyCuit) {
-      routeOrigin
-      routeDestination
+      id
+      origin
+      destination
       date
-      time
+      departureTime
       price
       durationMinutes
     }
@@ -48,10 +49,11 @@ export const DEPARTURES_QUERY = gql`
 `
 
 export interface Departure {
-  routeOrigin: string
-  routeDestination: string
+  id: number
+  origin: string
+  destination: string
   date: string
-  time: string
+  departureTime: string
   price: number
   durationMinutes: number
 }
@@ -63,10 +65,11 @@ export interface DeparturesResult {
 export const PUBLISH_DEPARTURE_MUTATION = gql`
   mutation PublishDeparture($input: PublishDepartureInput!) {
     publishDeparture(input: $input) {
-      routeOrigin
-      routeDestination
+      id
+      origin
+      destination
       date
-      time
+      departureTime
     }
   }
 `

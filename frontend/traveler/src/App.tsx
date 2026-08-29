@@ -171,7 +171,7 @@ function App() {
                     const { arrival, daysLater } = arrivalOf(option.departureTime, option.durationMinutes)
 
                     return (
-                      <tr key={`${option.companyCuit}-${option.departureTime}`}>
+                      <tr key={option.id}>
                         <td>{option.companyName}</td>
                         <td>{formatTime(option.departureTime)}</td>
                         <td>
