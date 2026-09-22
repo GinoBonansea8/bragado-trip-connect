@@ -54,7 +54,7 @@ $$;
 -- on their own. What each role may actually see is narrowed down by the row
 -- level security policies below.
 grant select on public.companies, public.routes, public.profiles to authenticated;
-grant select, insert on public.schedules to authenticated;
+grant select, insert, delete on public.schedules to authenticated;
 grant execute on function public.my_company_id() to authenticated;
 grant all on public.companies, public.routes, public.profiles, public.schedules to service_role;
 
@@ -84,6 +84,11 @@ create policy "Users read their own profile" on public.profiles
 drop policy if exists "Operators publish for their company" on public.schedules;
 create policy "Operators publish for their company" on public.schedules
   for insert to authenticated with check (company_id = public.my_company_id());
+
+-- And only it can take its own departures down.
+drop policy if exists "Operators delete their company's schedules" on public.schedules;
+create policy "Operators delete their company's schedules" on public.schedules
+  for delete to authenticated using (company_id = public.my_company_id());
 
 insert into public.companies (cuit, name) values
   ('30-00000001-7', '21900'),
