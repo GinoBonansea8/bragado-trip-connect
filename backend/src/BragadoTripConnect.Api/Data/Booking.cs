@@ -2,17 +2,11 @@ namespace BragadoTripConnect.Api.Data;
 
 public class Booking
 {
-    public string ScheduleRouteOrigin { get; set; } = null!;
+    public int Id { get; set; }
 
-    public string ScheduleRouteDestination { get; set; } = null!;
+    public int ScheduleId { get; set; }
 
-    public DateOnly ScheduleDate { get; set; }
-
-    public TimeOnly ScheduleTime { get; set; }
-
-    public string ScheduleCompanyCuit { get; set; } = null!;
-
-    public string UserDni { get; set; } = null!;
+    public int UserId { get; set; }
 
     [GraphQLIgnore]
     public Schedule Schedule { get; set; } = null!;

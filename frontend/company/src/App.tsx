@@ -217,10 +217,10 @@ function App() {
               </thead>
               <tbody>
                 {publishedDepartures.map(departure => (
-                  <tr key={`${departure.date}-${departure.time}-${departure.routeOrigin}-${departure.routeDestination}`}>
+                  <tr key={departure.id}>
                     <td>{formatDate(departure.date)}</td>
-                    <td>{departure.routeOrigin} → {departure.routeDestination}</td>
-                    <td>{formatTime(departure.time)}</td>
+                    <td>{departure.origin} → {departure.destination}</td>
+                    <td>{formatTime(departure.departureTime)}</td>
                     <td>{formatDuration(departure.durationMinutes)}</td>
                     <td>{formatPrice(departure.price)}</td>
                   </tr>

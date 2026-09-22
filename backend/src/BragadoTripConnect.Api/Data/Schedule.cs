@@ -6,15 +6,15 @@ namespace BragadoTripConnect.Api.Data;
 
 public class Schedule
 {
-    public string RouteOrigin { get; set; } = null!;
+    public int Id { get; set; }
 
-    public string RouteDestination { get; set; } = null!;
+    public int RouteId { get; set; }
+
+    public int CompanyId { get; set; }
 
     public DateOnly Date { get; set; }
 
     public TimeOnly Time { get; set; }
-
-    public string CompanyCuit { get; set; } = null!;
 
     public decimal Price { get; set; }
 

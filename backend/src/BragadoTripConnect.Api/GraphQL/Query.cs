@@ -7,6 +7,9 @@ using Route = BragadoTripConnect.Api.Data.Route;
 
 namespace BragadoTripConnect.Api.GraphQL;
 
+// The API still takes companies and routes by CUIT and by origin/destination
+// rather than by id: those are the identifiers the outside world already knows,
+// and the ids are an internal detail of how the rows are stored.
 public class Query
 {
     public async Task<HealthCheck?> GetHealthAsync(AppDbContext dbContext, CancellationToken cancellationToken)
@@ -39,15 +42,15 @@ public class Query
         CancellationToken cancellationToken)
     {
         return await dbContext.Schedules
-            .Where(schedule => schedule.RouteOrigin == origin
-                && schedule.RouteDestination == destination
+            .Where(schedule => schedule.Route.Origin == origin
+                && schedule.Route.Destination == destination
                 && schedule.Date == date)
             .OrderBy(schedule => schedule.Time)
             .Select(schedule => new DepartureOption(
-                schedule.CompanyCuit,
+                schedule.Id,
                 schedule.Company.Name,
-                schedule.RouteOrigin,
-                schedule.RouteDestination,
+                schedule.Route.Origin,
+                schedule.Route.Destination,
                 schedule.Date,
                 schedule.Time,
                 schedule.DurationMinutes,
@@ -55,15 +58,23 @@ public class Query
             .ToListAsync(cancellationToken);
     }
 
-    public async Task<List<Schedule>> GetDeparturesByCompanyAsync(
+    public async Task<List<CompanyDeparture>> GetDeparturesByCompanyAsync(
         string companyCuit,
         AppDbContext dbContext,
         CancellationToken cancellationToken)
     {
         return await dbContext.Schedules
-            .Where(schedule => schedule.CompanyCuit == companyCuit)
+            .Where(schedule => schedule.Company.Cuit == companyCuit)
             .OrderBy(schedule => schedule.Date)
             .ThenBy(schedule => schedule.Time)
+            .Select(schedule => new CompanyDeparture(
+                schedule.Id,
+                schedule.Route.Origin,
+                schedule.Route.Destination,
+                schedule.Date,
+                schedule.Time,
+                schedule.DurationMinutes,
+                schedule.Price))
             .ToListAsync(cancellationToken);
     }
 }

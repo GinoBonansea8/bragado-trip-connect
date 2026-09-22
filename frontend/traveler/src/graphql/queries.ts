@@ -34,7 +34,7 @@ export interface RoutesResult {
 export const SEARCH_QUERY = gql`
   query SearchDepartures($origin: String!, $destination: String!, $date: LocalDate!) {
     searchDepartures(origin: $origin, destination: $destination, date: $date) {
-      companyCuit
+      id
       companyName
       departureTime
       durationMinutes
@@ -44,7 +44,7 @@ export const SEARCH_QUERY = gql`
 `
 
 export interface DepartureOption {
-  companyCuit: string
+  id: number
   companyName: string
   departureTime: string
   durationMinutes: number
