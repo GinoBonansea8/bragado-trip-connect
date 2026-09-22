@@ -10,23 +10,32 @@ A full-stack web application to compare intercity trip options between
 
 ## The problem
 
-I live in Bragado, a small city in Buenos Aires province, and I travel back
-and forth to the city of Buenos Aires regularly to attend university. There
-is no direct, fast way to make that trip — I have to choose between four
-different transport operators, each with its own website (or none at all),
-schedule, and pricing:
+I was born in Bragado, a small city in Buenos Aires province, and moved to
+the city of Buenos Aires to go to university. Every time I head back — to
+visit family, for the holidays, or just for a weekend — I have to work out
+how to get there. I'm far from the only one: many students have left Bragado
+to study in a bigger city, and we all face the same trip.
+
+There are four main ways to travel between Bragado and Buenos Aires:
 
 - **21900** (bus)
 - **Santorini Turismo** (bus)
 - **Chevallier** (bus)
 - **Trenes Argentinos** (train)
 
-Each one has different departure times, arrival times, stops, ticket prices,
-and booking channels. Comparing them today means checking four separate
-sources by hand every single time, with no way to see all the options side
-by side. This project aims to fix that: a single place to look up and
-compare every available trip between Bragado and Buenos Aires, across all
-four operators.
+Each one has its own departure times, arrival times, stops, prices and
+booking channels, and there is no single place that brings them together.
+The only way to compare them is by hand, one operator at a time.
+
+It is worse than comparing four websites, because some operators can only be
+reached over WhatsApp. Finding out what trips exist means messaging each one,
+waiting for a reply, asking follow-up questions, comparing the answers and
+only then booking — and until someone at the company writes back, you simply
+don't know your options.
+
+This project aims to fix that: one place to look up every trip between
+Bragado and Buenos Aires without waiting on anyone to answer a message, and
+to compare them side by side by schedule, price and trip duration.
 
 ## Current status
 
