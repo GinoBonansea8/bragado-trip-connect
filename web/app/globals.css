@@ -1,0 +1,285 @@
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --panel: #fafafa;
+  --border: #e5e4e7;
+  --accent: #863bff;
+  --ok: #1a7f5a;
+  --error: #c0392b;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+
+  font: 18px/145% var(--sans);
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --panel: #1c1e26;
+    --border: #2e303a;
+    --accent: #a97cff;
+    --ok: #4ade80;
+    --error: #f87171;
+  }
+}
+
+/* The company pages keep the teal accent the company app used. */
+.company {
+  --accent: #0f766e;
+}
+
+@media (prefers-color-scheme: dark) {
+  .company {
+    --accent: #2dd4bf;
+  }
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  color: var(--text-h);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.badge {
+  font-size: 13px;
+  padding: 1px 10px;
+  border-radius: 999px;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+main {
+  width: 720px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 32px 16px;
+  box-sizing: border-box;
+}
+
+h1,
+h2 {
+  color: var(--text-h);
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 40px;
+  letter-spacing: -1px;
+  margin: 0 0 16px;
+}
+
+h2 {
+  font-size: 22px;
+  margin: 32px 0 8px;
+}
+
+p {
+  margin: 0 0 8px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 24px 0;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.row .field {
+  flex: 1 1 160px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+label {
+  font-size: 14px;
+  color: var(--text-h);
+}
+
+input,
+select {
+  font: inherit;
+  font-size: 16px;
+  width: 100%;
+  padding: 8px 10px;
+  box-sizing: border-box;
+  color: var(--text-h);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+button {
+  font: inherit;
+  font-size: 16px;
+  padding: 10px 20px;
+  color: #fff;
+  background: var(--accent);
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+input:disabled,
+select:disabled,
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.placeholder {
+  padding: 24px;
+  text-align: center;
+  font-size: 16px;
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+}
+
+.feedback {
+  margin: 16px 0 0;
+  font-size: 15px;
+}
+
+.feedback-error {
+  color: var(--error);
+}
+
+.sort {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 12px 0 16px;
+  font-size: 14px;
+}
+
+.chip {
+  padding: 4px 12px;
+  font-size: 14px;
+  color: var(--text);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.chip-on {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+th,
+td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+td {
+  color: var(--text-h);
+}
+
+.tag {
+  margin-left: 8px;
+  padding: 1px 8px;
+  font-size: 12px;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+}
+
+.next-day {
+  font-size: 13px;
+  color: var(--text);
+}
+
+.hint {
+  margin: -4px 0 16px;
+  font-size: 14px;
+}
+
+.feedback-ok {
+  color: var(--ok);
+}
+
+.header-end {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+  font-size: 14px;
+}
+
+.link-button {
+  padding: 0;
+  font-size: 14px;
+  color: var(--accent);
+  background: none;
+}
+
+.demo {
+  font-size: 14px;
+}
+
+.demo code {
+  color: var(--text-h);
+}
+
+.login {
+  width: 420px;
+}
+
+a.chip {
+  text-decoration: none;
+}
