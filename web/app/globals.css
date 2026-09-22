@@ -244,6 +244,11 @@ td {
   color: var(--text);
 }
 
+/* The traveller table carries two columns more than the rest of the app. */
+main.wide {
+  width: 960px;
+}
+
 .hint {
   margin: -4px 0 16px;
   font-size: 14px;
@@ -282,4 +287,21 @@ td {
 
 a.chip {
   text-decoration: none;
+}
+
+.danger-button {
+  padding: 4px 12px;
+  font-size: 14px;
+  color: var(--error);
+  background: none;
+  border: 1px solid var(--error);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }

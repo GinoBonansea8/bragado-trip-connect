@@ -31,3 +31,19 @@ export async function publishDeparture(_previous: PublishState, formData: FormDa
   revalidatePath('/empresa')
   return { ok: true }
 }
+
+export async function deleteDeparture(id: number) {
+  const { supabase, company } = await requireRole('company')
+
+  // Row level security already limits a delete to the company's own rows;
+  // filtering by company as well keeps the query honest about its intent.
+  const { error } = await supabase
+    .from('schedules')
+    .delete()
+    .eq('id', id)
+    .eq('company_id', company!.id)
+
+  if (error) throw new Error('No se pudo eliminar la salida.')
+
+  revalidatePath('/empresa')
+}

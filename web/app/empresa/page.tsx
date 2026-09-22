@@ -1,6 +1,7 @@
 import { requireRole } from '@/lib/auth'
 import { formatDate, formatDuration, formatPrice, formatTime } from '@/lib/format'
 import AppHeader from '../AppHeader'
+import DeleteButton from './DeleteButton'
 import PublishForm from './PublishForm'
 
 export default async function CompanyPage() {
@@ -44,6 +45,7 @@ export default async function CompanyPage() {
                   <th>Sale</th>
                   <th>Duración</th>
                   <th>Precio</th>
+                  <th><span className="visually-hidden">Acciones</span></th>
                 </tr>
               </thead>
               <tbody>
@@ -57,6 +59,12 @@ export default async function CompanyPage() {
                       <td>{formatTime(departure.time)}</td>
                       <td>{formatDuration(departure.duration_minutes)}</td>
                       <td>{formatPrice(departure.price)}</td>
+                      <td>
+                        <DeleteButton
+                          id={departure.id}
+                          label={`${route.origin} → ${route.destination} del ${formatDate(departure.date)} a las ${formatTime(departure.time)}`}
+                        />
+                      </td>
                     </tr>
                   )
                 })}
