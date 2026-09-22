@@ -23,3 +23,6 @@ npm-debug.log*
 
 # --- Docker ---
 docker-compose.override.yml
+
+# --- Vercel ---
+.vercel

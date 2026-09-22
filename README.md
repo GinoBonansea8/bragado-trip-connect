@@ -3,6 +3,11 @@
 A full-stack web application to compare intercity trip options between
 **Bragado** and **Buenos Aires**, Argentina.
 
+**Live demo:** https://bragado-trip-connect.vercel.app — sign in as
+`empresa@btp.com` to publish departures or `usuario@btp.com` to browse them
+(password `btp12345` for both). The demo is the Next.js + Supabase version in
+[`web/`](web/README.md); Vercel can't run the .NET backend described below.
+
 ## The problem
 
 I live in Bragado, a small city in Buenos Aires province, and I travel back

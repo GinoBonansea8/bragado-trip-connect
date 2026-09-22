@@ -1,0 +1,10 @@
+# Vercel only builds web/ (the project's Root Directory). Keep everything else
+# — and every secret — out of CLI uploads.
+/backend
+/frontend
+/get-docker.sh
+/docker-compose.yml
+.env
+.env.*
+node_modules
+.next
